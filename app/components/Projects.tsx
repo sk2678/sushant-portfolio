@@ -1,6 +1,8 @@
+
 "use client";
 
 import { useState } from "react";
+import type { CSSProperties } from "react";
 import Reveal from "./Reveal";
 import ProjectModal from "./ProjectModal";
 
@@ -44,18 +46,10 @@ const projects: Project[] = [
       "MongoDB data layer",
       "Responsive frontend",
     ],
-    technologies: [
-      "React.js",
-      "FastAPI",
-      "MongoDB",
-      "REST APIs",
-    ],
-    github:
-      "https://github.com/sk2678/Heallio-AI-Health-Dashboard",
-    live:
-      "https://sushant-heallio-3.onrender.com/docs",
+    technologies: ["React.js", "FastAPI", "MongoDB", "REST APIs"],
+    github: "https://github.com/sk2678/Heallio-AI-Health-Dashboard",
+    live: "https://sushant-heallio-3.onrender.com/docs",
   },
-
   {
     number: "02",
     title: "PixCrypt Image Security",
@@ -78,18 +72,10 @@ const projects: Project[] = [
       "Responsive UI",
       "Live deployment",
     ],
-    technologies: [
-      "React.js",
-      "Python",
-      "FastAPI",
-      "REST APIs",
-    ],
-    github:
-      "https://github.com/sk2678/PixCrypt-Image-Security",
-    live:
-      "https://sushant-pixcrypt.onrender.com",
+    technologies: ["React.js", "Python", "FastAPI", "REST APIs"],
+    github: "https://github.com/sk2678/PixCrypt-Image-Security",
+    live: "https://sushant-pixcrypt.onrender.com",
   },
-
   {
     number: "03",
     title: "DevForge-AI",
@@ -98,13 +84,13 @@ const projects: Project[] = [
     featured: false,
     status: "IN DEVELOPMENT",
     description:
-      "An AI-powered development platform concept focused on turning software requirements into structured project output.",
+      "An AI-powered development platform exploring how software requirements can become structured project output.",
     overview:
-      "DevForge-AI is an ambitious full-stack AI project focused on automating parts of the software development workflow.",
+      "DevForge-AI explores automating parts of the software development workflow.",
     problem:
-      "Starting a software project often requires repetitive planning, structure creation, and setup work before development can begin.",
+      "Starting a software project often requires repetitive planning, structure creation, and setup work.",
     solution:
-      "The project explores how AI can help transform requirements into structured development artifacts and project output.",
+      "The project explores how AI can help transform requirements into structured development artifacts.",
     features: [
       "AI-powered workflow",
       "Project generation",
@@ -112,17 +98,10 @@ const projects: Project[] = [
       "Database integration",
       "Modern SaaS interface",
     ],
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Prisma",
-      "AI",
-    ],
+    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "AI"],
     github: "#",
     live: "#",
   },
-
   {
     number: "04",
     title: "Voice AI Insurance Claim Agent",
@@ -133,11 +112,11 @@ const projects: Project[] = [
     description:
       "A voice-enabled multi-agent system designed to simplify insurance claim initiation through conversational input.",
     overview:
-      "The project explores a voice AI workflow where users can describe an insurance incident naturally and the system converts the information into structured claim data.",
+      "The project explores converting natural descriptions of insurance incidents into structured claim information.",
     problem:
-      "Traditional insurance claim initiation can involve repetitive forms and manually entering information across different fields.",
+      "Traditional insurance claim initiation can involve repetitive forms and manual data entry.",
     solution:
-      "The system uses conversational input to extract relevant incident information, identify missing fields, and guide the user toward a structured claim.",
+      "The system explores conversational input to extract incident information, identify missing fields, and guide users toward a structured claim.",
     features: [
       "Voice/text incident input",
       "Information extraction",
@@ -145,129 +124,178 @@ const projects: Project[] = [
       "Claim form mapping",
       "Multi-agent workflow",
     ],
-    technologies: [
-      "AI Agents",
-      "Gemini",
-      "Python",
-      "APIs",
-    ],
+    technologies: ["AI Agents", "Gemini", "Python", "APIs"],
     github: "#",
     live: "#",
   },
 ];
 
-function ProjectVisual({
-  type,
-}: {
-  type: Project["visual"];
-}) {
+function ProjectVisual({ type }: { type: Project["visual"] }) {
   if (type === "dashboard") {
     return (
-      <div className="project-visual visual-dashboard">
+      <div className="project-visual visual-dashboard artwork-3d">
+        <div className="artwork-orb orb-blue" />
+        <div className="artwork-orb orb-violet" />
+
         <div className="dashboard-sidebar">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
+          <span />
         </div>
 
         <div className="dashboard-main">
           <div className="dashboard-top">
-            <div></div>
-            <div></div>
+            <div />
+            <div />
           </div>
 
           <div className="dashboard-cards">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span />
+            <span />
+            <span />
           </div>
 
           <div className="dashboard-chart">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
           </div>
         </div>
+
+        <div className="artwork-caption">
+          <span className="artwork-pulse" />
+          HEALTH INTELLIGENCE
+        </div>
+
+        <div className="artwork-floating-tag">✳ AI INSIGHTS</div>
       </div>
     );
   }
 
   if (type === "security") {
     return (
-      <div className="project-visual visual-security">
-        <div className="security-lock">
-          <span>+</span>
+      <div className="project-visual visual-security artwork-3d">
+        <div className="artwork-orb orb-blue" />
+        <div className="artwork-orb orb-violet" />
+
+        <div className="security-image-frame">
+          <div className="security-image-surface">
+            <span className="security-mountain mountain-one" />
+            <span className="security-mountain mountain-two" />
+            <span className="security-sun" />
+          </div>
         </div>
 
-        <div className="security-lines">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="security-shield" aria-hidden="true">
+          <svg viewBox="0 0 100 112">
+            <path
+              d="M50 5 L88 20 V51 C88 76 72 95 50 106 C28 95 12 76 12 51 V20 Z"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+            />
+            <path
+              d="M34 55 L45 66 L68 41"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
 
-        <div className="security-label">
-          IMAGE SECURED
+        <div className="artwork-caption">
+          <span className="artwork-pulse" />
+          ENCRYPTION ACTIVE
         </div>
+
+        <div className="artwork-floating-tag">✦ IMAGE PROTECTED</div>
       </div>
     );
   }
 
   if (type === "code") {
     return (
-      <div className="project-visual visual-code">
-        <div className="code-window-header">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+      <div className="project-visual visual-code artwork-3d">
+        <div className="artwork-orb orb-blue" />
+        <div className="artwork-orb orb-violet" />
 
-        <div className="code-window-body">
-          <p>
-            <i>const</i> project = <b>generate</b>();
-          </p>
+        <div className="code-floating-panel">
+          <div className="code-window-header">
+            <span />
+            <span />
+            <span />
+            <small>devforge.ts</small>
+          </div>
 
-          <p className="code-line-small">
-            requirements → architecture
-          </p>
-
-          <p className="code-line-small">
-            architecture → implementation
-          </p>
-
-          <div className="code-progress">
-            <span></span>
+          <div className="code-window-body">
+            <p>
+              <i>const</i> project = <b>generate</b>();
+            </p>
+            <p className="code-line-small">
+              requirements → architecture
+            </p>
+            <p className="code-line-small">
+              architecture → implementation
+            </p>
+            <div className="code-progress">
+              <span />
+            </div>
           </div>
         </div>
+
+        <div className="code-node node-one">AI</div>
+        <div className="code-node node-two">&lt;/&gt;</div>
+        <div className="code-connector connector-one" />
+        <div className="code-connector connector-two" />
+
+        <div className="artwork-caption">
+          <span className="artwork-pulse" />
+          PROJECT GENERATION
+        </div>
+
+        <div className="artwork-floating-tag">✳ BUILD WITH AI</div>
       </div>
     );
   }
 
   return (
-    <div className="project-visual visual-voice">
+    <div className="project-visual visual-voice artwork-3d">
+      <div className="artwork-orb orb-blue" />
+      <div className="artwork-orb orb-violet" />
+
+      <div className="voice-rings">
+        <span />
+        <span />
+        <span />
+      </div>
+
       <div className="voice-center">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span />
+        <span />
+        <span />
       </div>
 
       <div className="voice-wave">
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
+        {Array.from({ length: 19 }, (_, index) => (
+          <i
+            key={index}
+            style={{ "--bar-index": index } as CSSProperties}
+          />
+        ))}
       </div>
 
-      <div className="voice-label">
-        LISTENING...
+      <div className="artwork-caption">
+        <span className="artwork-pulse" />
+        VOICE AI · MULTI-AGENT
       </div>
+
+      <div className="artwork-floating-tag">◉ CONVERSATIONAL AI</div>
     </div>
   );
 }
@@ -277,19 +305,13 @@ export default function Projects() {
     useState<Project | null>(null);
 
   return (
-    <section
-      id="work"
-      className="content-section projects-section"
-    >
+    <section id="work" className="content-section projects-section">
       <div className="section-container">
         <div className="section-heading">
           <span className="section-number">03</span>
 
           <div>
-            <p className="section-label">
-              SELECTED WORK
-            </p>
-
+            <p className="section-label">SELECTED WORK</p>
             <h2>
               Things I&apos;ve
               <span> built.</span>
@@ -300,27 +322,30 @@ export default function Projects() {
         <Reveal>
           <div className="projects-intro">
             <p>
-              A selection of projects where I&apos;ve worked
-              across frontend, backend, databases, APIs, and
-              AI-powered application workflows.
+              A selection of projects where I&apos;ve worked across frontend,
+              backend, databases, APIs, and AI-powered application workflows.
             </p>
+
+            <span className="projects-count">
+              <span className="projects-count-dot" />
+              04 PROJECTS · 02 LIVE
+            </span>
           </div>
         </Reveal>
 
         <div className="projects-grid">
           {projects.map((project, index) => {
             const isLive = project.status === "LIVE";
+            const hasGithub =
+              Boolean(project.github) && project.github !== "#";
+            const hasLiveDemo =
+              Boolean(project.live) && project.live !== "#";
 
             return (
-              <Reveal
-                key={project.number}
-                delay={index * 80}
-              >
+              <Reveal key={project.number} delay={index * 80}>
                 <article
                   className={`project-card ${
-                    project.featured
-                      ? "project-featured"
-                      : ""
+                    project.featured ? "project-featured" : ""
                   }`}
                 >
                   <div className="project-card-top">
@@ -341,14 +366,12 @@ export default function Projects() {
                           : "project-status-development"
                       }`}
                     >
-                      <span></span>
+                      <span />
                       {project.status}
                     </span>
                   </div>
 
-                  <ProjectVisual
-                    type={project.visual}
-                  />
+                  <ProjectVisual type={project.visual} />
 
                   <div className="project-card-content">
                     {project.featured && (
@@ -362,45 +385,42 @@ export default function Projects() {
                     <p>{project.description}</p>
 
                     <div className="project-tech">
-                      {project.technologies.map(
-                        (technology) => (
-                          <span key={technology}>
-                            {technology}
-                          </span>
-                        ),
-                      )}
+                      {project.technologies.map((technology) => (
+                        <span key={technology}>{technology}</span>
+                      ))}
                     </div>
 
                     <div className="project-card-actions">
                       <button
                         type="button"
                         className="project-view-button"
-                        onClick={() =>
-                          setSelectedProject(project)
-                        }
+                        onClick={() => setSelectedProject(project)}
+                        aria-label={`View ${project.title} case study`}
                       >
                         View Case Study
-                        <span>↗</span>
+                        <span aria-hidden="true">↗</span>
                       </button>
 
                       <div className="project-links">
-                        {project.github !== "#" && (
+                        {hasGithub && (
                           <a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`View ${project.title} source code on GitHub`}
                           >
-                            GitHub
+                            GitHub <span aria-hidden="true">↗</span>
                           </a>
                         )}
 
-                        {project.live !== "#" && (
+                        {hasLiveDemo && (
                           <a
                             href={project.live}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Open ${project.title} live demo`}
                           >
-                            Live
+                            Demo <span aria-hidden="true">↗</span>
                           </a>
                         )}
 

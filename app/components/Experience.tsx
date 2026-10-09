@@ -1,128 +1,94 @@
+
+"use client";
+
 import Reveal from "./Reveal";
 
-const experience = {
-  company: "Digiflute",
-  role: "Frontend Developer Intern",
-  type: "INTERNSHIP · FRONTEND",
-  focus: "React & UI Development",
-  description:
-    "Worked as part of the frontend team, contributing to reusable interfaces, application workflows, and product-facing UI development.",
-  contributions: [
-    "Built and worked with reusable React components",
-    "Worked with props, state, and React hooks",
-    "Contributed to frontend application workflows",
-    "Integrated frontend interfaces with APIs",
-    "Worked on responsive and structured user interfaces",
-  ],
-  technologies: [
-    "React.js",
-    "JavaScript",
-    "HTML",
-    "CSS",
-    "REST APIs",
-  ],
-};
+const experiences = [
+  {
+    number: "01",
+    role: "Frontend Development Intern",
+    company: "Digiflute — AcuSpecs / PackSpec",
+    type: "INTERNSHIP",
+    summary:
+      "Contributing to frontend development for a packaging specification and workflow platform.",
+    responsibilities: [
+      "Building and refining React-based user interfaces.",
+      "Working with reusable components, props, and state.",
+      "Understanding product, component, and specification workflows.",
+      "Collaborating with the team on frontend implementation.",
+    ],
+    stack: ["React", "TypeScript", "UI Components"],
+  },
+];
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="content-section experience-section"
-    >
+    <section id="experience" className="content-section experience-section">
       <div className="section-container">
         <div className="section-heading">
           <span className="section-number">04</span>
-
           <div>
             <p className="section-label">EXPERIENCE</p>
-
             <h2>
-              Where I&apos;ve
-              <span> worked.</span>
+              Learning by
+              <span> building.</span>
             </h2>
           </div>
         </div>
 
         <Reveal>
-          <article className="experience-card">
-            <div className="experience-header">
-              <div>
-                <span className="experience-type">
-                  {experience.type}
-                </span>
-
-                <h3>{experience.company}</h3>
-
-                <p className="experience-role">
-                  {experience.role}
-                </p>
-              </div>
-
-              <div className="experience-header-side">
-                <span className="experience-index">
-                  01
-                </span>
-
-                <span className="experience-status">
-                  <span></span>
-                  Internship
-                </span>
-              </div>
-            </div>
-
-            <div className="experience-intro">
-              <p>{experience.description}</p>
-            </div>
-
-            <div className="experience-body">
-              <div className="experience-contributions">
-                <span className="experience-section-label">
-                  CONTRIBUTIONS
-                </span>
-
-                <ul>
-                  {experience.contributions.map(
-                    (contribution) => (
-                      <li key={contribution}>
-                        <span>↗</span>
-                        <p>{contribution}</p>
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-
-              <div className="experience-details">
-                <div className="experience-detail">
-                  <span>ROLE</span>
-                  <strong>{experience.role}</strong>
-                </div>
-
-                <div className="experience-detail">
-                  <span>FOCUS</span>
-                  <strong>{experience.focus}</strong>
-                </div>
-
-                <div className="experience-detail">
-                  <span>WORK</span>
-                  <strong>
-                    React Components &amp; API Integration
-                  </strong>
-                </div>
-              </div>
-            </div>
-
-            <div className="experience-tech">
-              {experience.technologies.map(
-                (technology) => (
-                  <span key={technology}>
-                    {technology}
-                  </span>
-                ),
-              )}
-            </div>
-          </article>
+          <p className="experience-intro">
+            Practical experience, collaborative development, and lessons
+            learned while building real software interfaces.
+          </p>
         </Reveal>
+
+        <div className="experience-list">
+          {experiences.map((experience, index) => (
+            <Reveal key={experience.number} delay={index * 90}>
+              <article className="experience-card">
+                <div className="experience-card-top">
+                  <span className="experience-number">
+                    {experience.number}
+                  </span>
+                  <span className="experience-type">
+                    {experience.type}
+                  </span>
+                </div>
+
+                <div className="experience-main">
+                  <div className="experience-heading">
+                    <h3>{experience.role}</h3>
+                    <p>{experience.company}</p>
+                  </div>
+
+                  <p className="experience-summary">
+                    {experience.summary}
+                  </p>
+
+                  <p className="experience-subheading">
+                    AREAS OF CONTRIBUTION
+                  </p>
+
+                  <ul className="experience-responsibilities">
+                    {experience.responsibilities.map((item) => (
+                      <li key={item}>
+                        <span aria-hidden="true">↗</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="experience-stack">
+                    {experience.stack.map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

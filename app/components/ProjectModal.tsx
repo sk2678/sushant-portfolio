@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 type Project = {
   title: string;
@@ -24,30 +25,66 @@ export default function ProjectModal({
   project,
   onClose,
 }: ProjectModalProps) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
-    if (!project) {
-      return;
-    }
+    if (!project) return;
+
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         onClose();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const dialog = document.querySelector<HTMLElement>(
+        ".project-modal"
+      );
+
+      if (!dialog) return;
+
+      const focusable = dialog.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (focusable.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (
+        !event.shiftKey &&
+        document.activeElement === last
+      ) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
 
-    document.body.style.overflow = "hidden";
-
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus();
     };
   }, [project, onClose]);
 
-  if (!project) {
-    return null;
-  }
+  if (!project) return null;
 
   const hasGithub =
     Boolean(project.github) && project.github !== "#";
@@ -71,6 +108,7 @@ export default function ProjectModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="project-modal-title"
+        aria-describedby="project-modal-overview"
       >
         <div className="project-modal-header">
           <div>
@@ -78,12 +116,13 @@ export default function ProjectModal({
               {project.category}
             </span>
 
-            <h2 id="project-modal-title">
-              {project.title}
-            </h2>
+            <p className="project-modal-label">PROJECT CASE STUDY</p>
+
+            <h2 id="project-modal-title">{project.title}</h2>
           </div>
 
           <button
+            ref={closeButtonRef}
             type="button"
             className="project-modal-close"
             onClick={onClose}
@@ -95,32 +134,23 @@ export default function ProjectModal({
 
         <div className="project-modal-content">
           <div className="project-modal-section">
-            <span className="project-modal-label">
-              OVERVIEW
-            </span>
-
-            <p>{project.overview}</p>
+            <span className="project-modal-label">OVERVIEW</span>
+            <p id="project-modal-overview">{project.overview}</p>
           </div>
 
           <div className="project-modal-section">
-            <span className="project-modal-label">
-              PROBLEM
-            </span>
-
+            <span className="project-modal-label">THE PROBLEM</span>
             <p>{project.problem}</p>
           </div>
 
           <div className="project-modal-section">
-            <span className="project-modal-label">
-              SOLUTION
-            </span>
-
+            <span className="project-modal-label">MY APPROACH</span>
             <p>{project.solution}</p>
           </div>
 
           <div className="project-modal-section">
             <span className="project-modal-label">
-              FEATURES
+              KEY FEATURES
             </span>
 
             <ul className="project-feature-list">
@@ -132,14 +162,12 @@ export default function ProjectModal({
 
           <div className="project-modal-section">
             <span className="project-modal-label">
-              TECHNOLOGIES
+              TECH STACK
             </span>
 
             <div className="project-tech-list">
               {project.technologies.map((technology) => (
-                <span key={technology}>
-                  {technology}
-                </span>
+                <span key={technology}>{technology}</span>
               ))}
             </div>
           </div>
@@ -148,7 +176,7 @@ export default function ProjectModal({
         <div className="project-modal-footer">
           {isInDevelopment ? (
             <div className="project-development-status">
-              <span></span>
+              <span />
               Currently in development
             </div>
           ) : (
@@ -160,8 +188,7 @@ export default function ProjectModal({
                   rel="noopener noreferrer"
                   className="project-modal-button"
                 >
-                  GitHub
-                  <span>↗</span>
+                  View Source Code <span>↗</span>
                 </a>
               )}
 
@@ -172,8 +199,7 @@ export default function ProjectModal({
                   rel="noopener noreferrer"
                   className="project-modal-button project-modal-button-primary"
                 >
-                  Live Project
-                  <span>↗</span>
+                  View Live Demo <span>↗</span>
                 </a>
               )}
             </div>
@@ -184,7 +210,7 @@ export default function ProjectModal({
             className="project-modal-close-text"
             onClick={onClose}
           >
-            Close
+            Close Case Study
           </button>
         </div>
       </div>

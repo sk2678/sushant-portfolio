@@ -8357,3 +8357,65 @@ section[id] {
     scroll-behavior: auto;
   }
 }
+
+/* =========================================
+   PORTFOLIO POLISH — NAVIGATION & ACCESSIBILITY
+========================================= */
+
+/* Smooth anchor navigation */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+/* Keep the navigation above page content */
+.navbar {
+  z-index: 1000;
+}
+
+/* Keep the mobile menu above the page and below dialogs */
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+    z-index: 1000;
+  }
+
+  .navbar-container {
+    position: relative;
+    z-index: 1001;
+  }
+
+  .mobile-menu {
+    z-index: 1000;
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* Clear keyboard focus for accessible navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #9ce8ff;
+  outline-offset: 4px;
+}
+
+/* Respect visitors who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

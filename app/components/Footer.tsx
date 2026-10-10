@@ -1,93 +1,64 @@
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+
+import Reveal from "./Reveal";
+
+export default function Resume() {
+  const resumePath = "/Sushant-Kapil-Resume.pdf";
 
   return (
-    <footer className="site-footer">
-      <div className="footer-container">
-        <div className="footer-top">
-          <div className="footer-brand">
-            <a href="#top" className="footer-logo">
-              SK<span>.</span>
-            </a>
+    <section
+      id="resume"
+      className="content-section resume-section"
+      aria-labelledby="resume-heading"
+    >
+      <div className="section-container">
+        <Reveal>
+          <div className="resume-card">
+            <div className="resume-main">
+              <p className="section-label">RESUME</p>
 
-            <p>
-              Full-Stack Developer &amp; AI Enthusiast building
-              practical digital products.
-            </p>
+              <h2 id="resume-heading">
+                A closer look at
+                <span> my work.</span>
+              </h2>
 
-            <a
-              href="mailto:sk0261901@gmail.com"
-              className="footer-email"
-            >
-              sk0261901@gmail.com
-              <span>↗</span>
-            </a>
-          </div>
+              <p className="resume-description">
+                Explore my technical skills, projects, education,
+                and experience. I'm open to software engineering
+                internships, full-stack development opportunities,
+                and AI-focused roles.
+              </p>
 
-          <div className="footer-navigation">
-            <div className="footer-column">
-              <span className="footer-heading">
-                NAVIGATION
-              </span>
-
-              <a href="#work">Work</a>
-              <a href="#about">About</a>
-              <a href="#skills">Skills</a>
-              <a href="#experience">Experience</a>
-              <a href="#education">Education</a>
-              <a href="#resume">Resume</a>
+              <div className="resume-meta">
+                <span>FULL-STACK DEVELOPMENT</span>
+                <span>AI / SOFTWARE ENGINEERING</span>
+              </div>
             </div>
 
-            <div className="footer-column">
-              <span className="footer-heading">
-                CONNECT
-              </span>
-
+            <div className="resume-action">
               <a
-                href="https://github.com/sk2678"
+                href={resumePath}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="resume-button"
+                aria-label="View Sushant Kapil's resume in a new tab"
               >
-                GitHub
-                <span>↗</span>
+                <span>View Resume</span>
+                <span aria-hidden="true">↗</span>
               </a>
 
               <a
-                href="https://linkedin.com/in/sushant-kapil-195b5428b"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={resumePath}
+                download="Sushant-Kapil-Resume.pdf"
+                className="resume-download"
+                aria-label="Download Sushant Kapil's resume as a PDF"
               >
-                LinkedIn
-                <span>↗</span>
-              </a>
-
-              <a href="mailto:sk0261901@gmail.com">
-                Email
-                <span>↗</span>
-              </a>
-
-              <a href="#contact">
-                Contact
-                <span>↗</span>
+                Download PDF
+                <span aria-hidden="true">↓</span>
               </a>
             </div>
           </div>
-        </div>
-
-        <div className="footer-bottom">
-          <p>© {currentYear} Sushant Kapil</p>
-
-          <div className="footer-status">
-            <span className="status-dot"></span>
-            <span>Available for opportunities</span>
-          </div>
-
-          <a href="#top" className="back-to-top">
-            Back to top
-            <span>↑</span>
-          </a>
-        </div>
+        </Reveal>
       </div>
-    </footer>
+    </section>
   );
 }

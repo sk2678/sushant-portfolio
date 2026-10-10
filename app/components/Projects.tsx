@@ -301,8 +301,21 @@ function ProjectVisual({ type }: { type: Project["visual"] }) {
 }
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] =
-    useState<Project | null>(null);
+const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+const [activeFilter, setActiveFilter] = useState<
+  "ALL" | "FULL-STACK" | "AI"
+>("ALL");
+
+const filteredProjects = projects.filter((project) => {
+  if (activeFilter === "ALL") return true;
+
+  if (activeFilter === "FULL-STACK") {
+    return project.category.includes("FULL-STACK");
+  }
+
+  return project.category.includes("AI");
+});
 
   return (
     <section id="work" className="content-section projects-section">
@@ -333,8 +346,34 @@ export default function Projects() {
           </div>
         </Reveal>
 
-        <div className="projects-grid">
-          {projects.map((project, index) => {
+        <div
+  className="project-filters"
+  role="group"
+  aria-label="Filter projects by category"
+>
+  {(
+    [
+      { label: "All Projects", value: "ALL" },
+      { label: "Full-Stack", value: "FULL-STACK" },
+      { label: "AI Projects", value: "AI" },
+    ] as const
+  ).map((filter) => (
+    <button
+      key={filter.value}
+      type="button"
+      className={`project-filter ${
+        activeFilter === filter.value ? "project-filter-active" : ""
+      }`}
+      onClick={() => setActiveFilter(filter.value)}
+      aria-pressed={activeFilter === filter.value}
+    >
+      {filter.label}
+    </button>
+  ))}
+</div>
+
+<div className="projects-grid">
+  {filteredProjects.map((project, index) => {
             const isLive = project.status === "LIVE";
             const hasGithub =
               Boolean(project.github) && project.github !== "#";

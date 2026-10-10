@@ -8419,3 +8419,61 @@ button:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =========================================
+   INTERACTIVE PROJECT FILTERS
+========================================= */
+
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 28px 0 24px;
+}
+
+.project-filter {
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.project-filter:hover {
+  color: var(--text-primary);
+  border-color: rgba(156, 232, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.project-filter-active {
+  color: var(--text-primary);
+  border-color: rgba(156, 232, 255, 0.6);
+  background: rgba(156, 232, 255, 0.1);
+}
+
+.project-filter:focus-visible {
+  outline: 2px solid #9ce8ff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .project-filters {
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .project-filter {
+    padding: 9px 13px;
+    font-size: 12px;
+  }
+}

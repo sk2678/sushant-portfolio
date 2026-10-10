@@ -8664,3 +8664,154 @@ button:focus-visible {
     transition: none;
   }
 }
+
+/* Custom 404 page */
+.not-found-page {
+  min-height: 75vh;
+  display: grid;
+  place-items: center;
+  padding: 80px 20px;
+}
+
+.not-found-card {
+  width: min(100%, 760px);
+  padding: clamp(28px, 6vw, 64px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.025);
+  text-align: left;
+}
+
+.not-found-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.not-found-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #9ce8ff;
+  box-shadow: 0 0 12px rgba(156, 232, 255, 0.5);
+}
+
+.not-found-card h1 {
+  margin: 28px 0 18px;
+  color: var(--text-primary);
+  font-size: clamp(38px, 7vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -2.5px;
+}
+
+.not-found-card h1 span {
+  display: block;
+  color: #9ce8ff;
+}
+
+.not-found-description {
+  max-width: 470px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.not-found-button,
+.not-found-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 46px;
+  text-decoration: none;
+  font-size: 13px;
+  transition: transform 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.not-found-button {
+  padding: 0 20px;
+  border: 1px solid #9ce8ff;
+  border-radius: 999px;
+  background: #9ce8ff;
+  color: #071018;
+  font-weight: 600;
+}
+
+.not-found-secondary {
+  color: var(--text-primary);
+}
+
+.not-found-button:hover,
+.not-found-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.not-found-secondary:hover {
+  color: #9ce8ff;
+}
+
+.not-found-code {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 52px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.not-found-code span:first-child {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.not-found-line {
+  width: 28px;
+  height: 1px;
+  background: var(--border);
+}
+
+.not-found-button:focus-visible,
+.not-found-secondary:focus-visible {
+  outline: 2px solid #9ce8ff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .not-found-page {
+    padding: 48px 16px;
+  }
+
+  .not-found-card h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .not-found-code {
+    margin-top: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .not-found-button,
+  .not-found-secondary {
+    transition: none;
+  }
+}

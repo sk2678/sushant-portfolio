@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://YOUR-VERCEL-DOMAIN.vercel.app/sitemap.xml",
+    sitemap: "https://sushant-portfolio-one.vercel.app",
   };
 }
